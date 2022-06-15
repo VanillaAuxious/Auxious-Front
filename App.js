@@ -12,16 +12,19 @@ const styles = StyleSheet.create({
 
 export default function App() {
   return (
-    <WebView
-      style={styles.WebViewStyle}
-      injectedJavaScriptBeforeContentLoaded={`
+    <>
+      <WebView
+        mixedContentMode='always'
+        style={styles.WebViewStyle}
+        injectedJavaScriptBeforeContentLoaded={`
         window.onerror = function(message, sourcefile, lineno, colno, error) {
           alert("Message: " + message + " - Source: " + sourcefile + " Line: " + lineno + ":" + colno);
           return true;
         };
       `}
-      source={{ uri: 'https://teamproject-auxios.netlify.app' }}
-    />
+        source={{ uri: 'https://teamproject-auxios.netlify.app/login' }}
+      />
+    </>
   );
 }
 
